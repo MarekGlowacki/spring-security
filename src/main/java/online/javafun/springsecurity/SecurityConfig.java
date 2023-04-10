@@ -13,9 +13,6 @@ class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests.anyRequest().authenticated());
         http.formLogin(form -> form.loginPage("/login").permitAll());
-        http.logout(logout -> logout
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout/**", HttpMethod.GET.name()))
-        );
         http.csrf().disable();
         return http.build();
     }
