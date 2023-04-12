@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="pl" th:lang="${lang ne null ? lang : 'en'}" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" th:lang="${lang ne null ? lang : 'en'}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
 <head>
     <meta charset="UTF-8">
     <title>Strona Główna</title>
 </head>
 <body>
     <h1 th:text="|${welcomeMessage}!|">Strona Główna</h1>
+    <a th:if="${#authentication.isAuthenticated()}"
+       th:text="|Wyloguj się ${#authentication.name}|"
+       th:href="@{/logout}">Wyloguj się ziomalu</a>
 </body>
 </html>
