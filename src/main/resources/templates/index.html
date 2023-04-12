@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1 th:text="|${welcomeMessage}!|">Strona Główna</h1>
-    <a th:if="${#authentication.isAuthenticated()}"
+    <a sec:authorize="isAuthenticated()"
        th:text="|Wyloguj się ${#authentication.name}|"
        th:href="@{/logout}">Wyloguj się ziomalu</a>
 </body>
