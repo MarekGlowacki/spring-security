@@ -1,6 +1,7 @@
 package online.javafun.springsecurity;
 
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     
     @GetMapping("/")
-    String home(Authentication authentication, Model model) {
-        model.addAttribute("username", authentication.getName());
+    String home(@CurrentSecurityContext SecurityContext context, Model model) {
+        model.addAttribute("username", context.getAuthentication().getName());
         return "index";    
     }
 }
