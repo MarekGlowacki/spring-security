@@ -17,8 +17,8 @@ public class HomeController {
 
     @GetMapping("/")
     String home(@RequestParam(defaultValue = "en") String lang, Model model) {
-//        model.addAttribute("lang", lang);
-//        String welcomeMessage = welcomeMessageService.getWelcomeMessage(lang);
+        model.addAttribute("lang", lang);
+        String welcomeMessage = welcomeMessageService.getWelcomeMessage(lang);
         model.addAttribute("welcomeMessage", welcomeMessage);
         return "index";
     }
