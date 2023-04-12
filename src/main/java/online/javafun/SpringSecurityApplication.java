@@ -1,4 +1,4 @@
-package online.javafun.springsecurity;
+package online.javafun;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
