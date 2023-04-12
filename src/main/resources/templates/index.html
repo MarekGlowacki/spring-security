@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" th:lang="${lang ne null ? lang : 'en'}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Strona Główna</title>
 </head>
 <body>
-    <h1>Strona Główna</h1>
-    <h2 th:text="|Hello ${username}!|">Hello John!</h2>
+    <h1 th:text="|${welcomeMessage}!|">Strona Główna</h1>
 </body>
 </html>
