@@ -1,4 +1,4 @@
-package online.javafun.springsecurity;
+package online.javafun.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

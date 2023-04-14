@@ -1,4 +1,4 @@
-package online.javafun.springsecurity;
+package online.javafun.web;
 
 import online.javafun.message.WelcomeMessageService;
 import org.springframework.stereotype.Controller;
