@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
-
+class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
     public CustomUserDetailsService(UserService userService) {
@@ -21,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userService.findCredentialsByEmail(username)
                 .map(this::createUserDetails)
-                .orElseThrow(() -> new UsernameNotFoundException("User with email %s not found".formatted(username)));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email %s not found", username)));
     }
 
     private UserDetails createUserDetails(UserCredentialsDto credentials) {
