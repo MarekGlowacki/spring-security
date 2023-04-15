@@ -9,7 +9,10 @@ import org.springframework.security.web.SecurityFilterChain;
 class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(requests -> requests.anyRequest().authenticated());
+        http.authorizeHttpRequests(
+                requests -> requests
+                        .requestMatchers("/img/**", "/styles/**").permitAll()
+                        .anyRequest().authenticated());
         http.formLogin(login -> login.loginPage("/login").permitAll());
         http.csrf().disable();
         return http.build();
