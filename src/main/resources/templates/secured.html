@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pl" th:lang="${lang ne null ? lang : 'en'}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+    <meta charset="UTF-8">
+    <title>Panel uzytkownika</title>
+</head>
+<body>
+    <h1 th:text="|${welcomeMessage}!|">Panel uzytkownika</h1>
+    <a sec:authorize="isAuthenticated()"
+       th:text="|Wyloguj się ${#authentication.name}|"
+       th:href="@{/logout}">Wyloguj się ziomalu</a>
+</body>
+</html>

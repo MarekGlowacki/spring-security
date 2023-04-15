@@ -1,6 +1,7 @@
 .container {
     margin: 0 auto;
     max-width: 400px;
+    text-align: center;
 }
 
 .login-form {
@@ -22,5 +23,9 @@
 
 .form-item {
     margin: 4px 0;
+    width: 100%;
+}
+
+.scaled-image{
     width: 100%;
 }

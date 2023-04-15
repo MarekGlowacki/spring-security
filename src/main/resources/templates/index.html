@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="pl" th:lang="${lang ne null ? lang : 'en'}"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      >
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Strona Główna</title>
+    <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
 </head>
 <body>
-    <h1 th:text="|${welcomeMessage}!|">Strona Główna</h1>
-    <a sec:authorize="isAuthenticated()"
-       th:text="|Wyloguj się ${#authentication.name}|"
-       th:href="@{/logout}">Wyloguj się ziomalu</a>
+<div class="container">
+  <h1>Bezpieczna Strona</h1>
+  <img src="../static/img/klodka.jpg" th:src="@{/img/klodka.jpg}"
+        alt="Bezpieczna Strona"
+        class="scaled-image"/>
+  <a href="#" th:href="@{/secured}">Zabezpieczona Strona</a>
+  <a href="#" th:href="@{/admin}">Panel admina</a>
+</div>
 </body>
 </html>

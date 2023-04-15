@@ -11,7 +11,10 @@ class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                 requests -> requests
-//                        .requestMatchers("/img/**", "/styles/**").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/img/**", "/styles/**").permitAll()
+                        .requestMatchers("/secured").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated());
         http.formLogin(login -> login.loginPage("/login").permitAll());
         http.csrf().disable();
