@@ -11,11 +11,9 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests
-                .mvcMatchers("/").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user-panel/**").hasAuthority("ROLE_USER")
-                .mvcMatchers(HttpMethod.POST, "/calculate").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated();
+                .mvcMatchers("/user-panel/**").permitAll()
+                .mvcMatchers("/user-panel/edit").hasRole("USER")
+                .mvcMatchers("/user-panel/delete-account").hasRole("ADMIN")
         );
         http.formLogin(login -> login.loginPage("/login").permitAll());
         http.csrf().disable();
