@@ -12,5 +12,10 @@
     <a sec:authorize="isAuthenticated()"
        th:text="|Wyloguj się ${#authentication.name}|"
        th:href="@{/logout}">Wyloguj się ziomalu</a>
+    <h2>Zmień hasło</h2>
+<form th:action="@{/change-password}" method="post">
+    <input type="password" name="newPassword" placeholder="Nowe hasło">
+    <button type="submit">Zmień</button>
+</form>
 </body>
 </html>

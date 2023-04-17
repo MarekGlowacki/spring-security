@@ -2,10 +2,12 @@ package online.javafun.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 class SecurityConfig {
@@ -15,11 +17,14 @@ class SecurityConfig {
                 requests -> requests
                         .requestMatchers("/", "/register", "/confirmation").permitAll()
                         .requestMatchers("/img/**", "/styles/**").permitAll()
-                        .requestMatchers("/secured").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/secured", "/change-password").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated());
         http.formLogin(login -> login.loginPage("/login").permitAll());
-        http.csrf().disable();
+        http.logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout/**", HttpMethod.GET.name()))
+                .logoutSuccessUrl("/")
+        );
         return http.build();
     }
 
